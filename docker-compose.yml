@@ -1,0 +1,21 @@
+services:
+  pg-task-manager:
+    image: postgres:latest
+    container_name: pg-task-manager
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+
+  pg-admin-task-manager:
+    image: dpage/pgadmin4
+    container_name: pg-admin-task-manager
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "robbyrnes@hotmail.co.uk"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
